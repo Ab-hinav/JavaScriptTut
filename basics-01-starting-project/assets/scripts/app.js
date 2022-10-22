@@ -1,8 +1,19 @@
-let currentResult = 0;
+const defaultResult = 0;
+let currentResult = defaultResult;
 
-currentResult = currentResult + 10*3;
+// currentResult = currentResult + 10*3;
 
-outputResult(currentResult, '');
+
+function add() {
+    currentResult = currentResult + parseInt(userInput.value) ;
+    // can use + instead of parseInt
+    // alert('The result is ' + result);
+    outputResult(currentResult, '');
+}
+addBtn.addEventListener('click', add);
+
+
+
 
 
 
