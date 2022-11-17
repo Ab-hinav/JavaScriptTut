@@ -2,6 +2,7 @@ const defaultResult = 0;
 let currentResult = defaultResult;
 let logEntries = [];
 // currentResult = currentResult + 10*3;
+let initialResult = currentResult;
 
 function getUserNumberInput() {
     return parseInt(userInput.value);
@@ -27,8 +28,15 @@ function writeToLog(operatioIdentifier, prevResult,
 
 function calculateResult(calculationType) {
     const enteredNumber = getUserNumberInput();
+
+    if (calculationType !== 'ADD' && calculationType !== 'SUBTRACT' && calculationType !== 'MULTIPLY' && calculationType !== 'DIVIDE' || !enteredNumber) {
+        return;
+    }
+
+   
+    initialResult = currentResult;
     let mathOperator;
-    if (calculationType === 'ADD') {
+    if (calculationType === 'ADD') {    // == is for value, === is for value and type
         currentResult += enteredNumber;
         mathOperator = '+';
     } else if (calculationType === 'SUBTRACT') {
