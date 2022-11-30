@@ -18,13 +18,24 @@ let battlelog = [];
 
 let enteredValue = prompt('Maximum life for you and the monster.', '100');
 
-chosenMaxLife = parseInt(enteredValue);
+function getMaxLifeValues() {
 
-if (enteredValue === '' || enteredValue === null || isNaN(enteredValue) || enteredValue <= 0)  {  
-    chosenMaxLife = 100;
+    let parsedVal = parseInt(enteredValue);
+
+    if (parsedVal === '' || parsedVal === null || isNaN(parsedVal) || parsedVal <= 0)  {  
+        throw {message: 'Invalid user input, not a number!'};
+    }
+    return parsedVal;
 }
 
-
+try {
+chosenMaxLife = getMaxLifeValues();
+} catch (error) {
+    console.log(error);
+    alert('You entered something wrong, default value of 100 was used.');
+    chosenMaxLife = 100;
+    //throw error;
+} 
 adjustHealthBars(chosenMaxLife);
 
 function writeToLog (event,value,monsterHealth,playerHealth) {
