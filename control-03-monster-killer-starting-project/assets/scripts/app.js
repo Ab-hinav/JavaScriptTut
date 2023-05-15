@@ -1,3 +1,4 @@
+// here we define all our constants
 const ATTACK_VALUE = 10;
 const MONSTER_ATTACK_VALUE = 14;
 const STRONG_ATTACK_VALUE = 17;
@@ -28,8 +29,9 @@ function getMaxLifeValues() {
     return parsedVal;
 }
 
+// if user enters a wrong value, we catch the error and set the default value of 100
 try {
-chosenMaxLife = getMaxLifeValues();
+    chosenMaxLife = getMaxLifeValues();
 } catch (error) {
     console.log(error);
     alert('You entered something wrong, default value of 100 was used.');
@@ -68,10 +70,10 @@ function writeToLog (event,value,monsterHealth,playerHealth) {
 
 
 function reset() {
-     currentMonsterHealth = chosenMaxLife;
-     currentPlayerHealth = chosenMaxLife;
-        resetGame(chosenMaxLife);
-    }
+    currentMonsterHealth = chosenMaxLife;
+    currentPlayerHealth = chosenMaxLife;
+    resetGame(chosenMaxLife);
+}
 
 
 function endRound() {
@@ -157,3 +159,8 @@ strongAttackBtn.addEventListener('click', strongAttackHandler);
 healBtn.addEventListener('click', healPlayerHandler);
 
 logBtn.addEventListener('click', printLogHandler);
+
+// what does !! do?
+// !! converts a value to a boolean and then inverts it
+// !!'hello' => true
+// !!'' => false , why is this false? empty string is falsy then it is converted to true and then inverted to false

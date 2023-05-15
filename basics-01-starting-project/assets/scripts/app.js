@@ -9,6 +9,7 @@ function getUserNumberInput() {
 }
 
 function createAndWriteOutput(operator, resultBeforeCalc, calcNumber) {
+    // `` backticks used for template literals
     const calcDescription = `${resultBeforeCalc} ${operator} ${calcNumber}`;
     outputResult(currentResult, calcDescription); // from vendor file
 }
@@ -50,7 +51,8 @@ function calculate(operation) {
 
 }
 
-
+// use bind to pass arguments to event listener function
+// bind keyword allows us to preconfigure the function
 addBtn.addEventListener('click', calculate.bind(this, 'ADD'));
 subtractBtn.addEventListener('click', calculate.bind(this, 'SUBTRACT'));
 multiplyBtn.addEventListener('click', calculate.bind(this, 'MULTIPLY'));

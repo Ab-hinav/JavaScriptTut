@@ -3,6 +3,7 @@ const addMovieModal = document.getElementById('add-modal');
 console.log(addMovieModal);
 const movies = [];
 
+// query selector here selects the header tag and the first button in it
 const startAddMovieButton = document.querySelector('header button');
 // // const startAddMovieButton2 = document.querySelector('header').lastElementChild;
 // console.log(startAddMovieButton);
@@ -10,6 +11,7 @@ const startAddMovieButton = document.querySelector('header button');
 const backdrop = document.getElementById('backdrop');
 const cancelAddMovieButton = addMovieModal.querySelector('.btn--passive');
 const addAddMovieButton = cancelAddMovieButton.nextElementSibling;
+// query selector all here selects all the inputs in the add movie modal
 const userInputs = addMovieModal.querySelectorAll('input');
 const entryTextSection = document.getElementById('entry-text');
 const areYouSureModal = document.getElementById('delete-modal');
@@ -33,6 +35,8 @@ const deleteMoviebyIdHandler = (movieId) => {
     const cancelMovieDeletionButton = areYouSureModal.querySelector('.btn--passive');
     cancelMovieDeletionButton.removeEventListener('click',cancelMovieDeletion);
     cancelMovieDeletionButton.addEventListener('click',cancelMovieDeletion);
+    // why bind is used here? 
+    // because we want to pass the movieId to the deleteMoviebyId function
     deleteMovieButton.addEventListener('click',deleteMoviebyId.bind(null,movieId));
 
 };
