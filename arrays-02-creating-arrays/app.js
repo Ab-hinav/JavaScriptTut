@@ -147,6 +147,51 @@ console.log(filteredArray);
 // writing the above function in a shorter way
 const filteredArray2 = prices3.filter(price => price > 6);
 
+// map method - returns a new array with the results of calling a provided function on every element in the calling array
+
+
+//use chaining to combine multiple array methods
+const filteredArray3 = prices3.filter(price => price > 6).map(price => ({price: price})).reduce((prevValue, curValue) => prevValue + curValue.price, 0);
+console.log(filteredArray3);
+
+
+// split and join
+const data = 'new york;10.99;2000';
+const transformedData = data.split(';');
+console.log(transformedData);
+// convert string in array to number
+const transformedData2 = data.split(';').map((item) => {
+    return +item;
+});
+// how does +item work ?
+// +item is same as Number(item)
+
+console.log('fds',transformedData2);
+
+const nameFragments = ['Abhi', 'Singh'];
+const names = nameFragments.join(' ');
+console.log(names);
+
+
+// spread operator - used to split up array elements or object properties
+const copiedNameFragments = [...nameFragments];
+console.log(copiedNameFragments);
+const persons = [{name: 'Abhi', age: 30}, {name: 'Max', age: 31}];
+const copiedPersons = [...persons];
+persons.push({name: 'Anna', age: 29});
+const copiedPersons2 = [...persons.map(person => ({name: person.name, age: person.age}))];
+persons[0].age = 31;
+console.log(persons, copiedPersons);
+console.log(copiedPersons2);
+
+console.log(Math.min(...prices3));
+
+
+// array destructuring
+const sample = ['Abhi', 'Singh', 30, 1.79];
+const [firstName, lastName, ...otherInfo] = sample;
+console.log(firstName, lastName, otherInfo);
+
 
 
 
