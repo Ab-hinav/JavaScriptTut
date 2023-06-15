@@ -70,12 +70,24 @@ const addMovieHandler = () => {
 
     const newMovie = {
         info: {
-            title,
+            get title(){
+                return this._title;
+            },
+            set title(val) {
+                if(val.trim() === '') {
+                    this._title = 'DEFAULT';
+                    return;
+                }
+                this._title = val;
+            },
             [extraName]: extraValue
         },
-        id: Math.random(1000)
+        id: Math.random(1000),
+        getFormattedTitle: function() {
+            return this.info.title.toUpperCase();
+        }
     };
-
+    newMovie.info.title = title;
     movies.push(newMovie);
     console.log(newMovie);
     clearMovieInput();
@@ -123,10 +135,11 @@ const clearMovieInput = () => {
 
 const addMovieToList = (movie) => {
     const movieEl = document.createElement('li');
-    let text = movie.info.title + ' - ';
-    for(const key in movie.info) {
+    let { info } = movie;
+    let text = info.title + ' - ';
+    for(const key in info) {
         if(key !== 'title') {
-            text = text + `${key}: ${movie.info[key]}`;
+            text = text + `${key}: ${info[key]}`;
         }
     }
     movieEl.textContent = text;
@@ -170,6 +183,106 @@ console.log(person3);
 
 
 */
+
+//object assign
+// const person = { name: 'Max' };
+// const person2 = Object.assign({}, person);
+// person.name = 'Manu';
+// console.log(person2);
+// console.log(person);
+
+// check a property exists in an object
+/*
+const person = {
+    name: 'Max',
+    hobbies: ['Sports', 'Cooking']
+};
+if ('name' in person) {
+    console.log('property exists');
+}
+if (person.name) {
+    console.log('property exists');
+}
+if (person.prop === undefined) {
+    console.log('property doesnt exists');
+}
+*/
+
+// object destructuring
+
+    // what is it?
+    // - extracting data from objects and arrays
+    // - and assigning them to variables
+    // - it is a way to pull elements out of objects and arrays
+    // - and store them in variables
+    // example 1:
+    // const person = {
+    //     name: 'Max',
+    //     age: 30
+    // };
+    // const { name, age } = person;
+    // console.log(name, age);
+//
+
+// this - keyword
+// - refers to the object that is executing the current function
+// - in a method, this refers to the owner object
+// - alone, this refers to the global object
+
+// call, apply, bind
+// - call and apply are used to call a function with a specific this value
+// - bind is used to create a new function with a specific this value
+// example 1:
+// const person = {
+//     name: 'Max',
+//     age: 30,
+//     greet: function() {
+//         console.log('Hi, I am ' + this.name);
+//     }
+// };
+// person.greet();
+// const anotherPerson = {
+//     name: 'Manu'
+// };
+// anotherPerson.greet = person.greet;
+// anotherPerson.greet();
+// const anotherGreet = person.greet.bind(anotherPerson);
+// anotherGreet();
+
+// example using call
+// const person = {
+//     name: 'Max',
+//     age: 30,
+//     greet: function() {
+//         console.log('Hi, I am ' + this.name);
+//     }
+// };
+// person.greet();
+// const anotherPerson = {
+//     name: 'Manu'
+// };
+// anotherPerson.greet = person.greet;
+// anotherPerson.greet();
+// person.greet.call(anotherPerson);
+
+// example using apply
+// const person = {
+//     name: 'Max',
+//     age: 30,
+//     greet: function() {
+//         console.log('Hi, I am ' + this.name);
+//     }
+// };
+// person.greet();
+// const anotherPerson = {
+//     name: 'Manu'
+// };
+// anotherPerson.greet = person.greet;
+// anotherPerson.greet();
+// person.greet.apply(anotherPerson);
+
+
+// arrow functions dont bind this to anything
 
 
 
