@@ -179,10 +179,12 @@ console.log(copiedNameFragments);
 const persons = [{name: 'Abhi', age: 30}, {name: 'Max', age: 31}];
 const copiedPersons = [...persons];
 persons.push({name: 'Anna', age: 29});
-const copiedPersons2 = [...persons.map(person => ({name: person.name, age: person.age}))];
+const copiedPersons2 = persons.map(person => ({name: person.name, age: person.age}));
 persons[0].age = 31;
+const cp4 = persons.map(person => ({name: person.name, age: person.age}));
 console.log(persons, copiedPersons);
 console.log(copiedPersons2);
+console.log(cp4);
 
 console.log(Math.min(...prices3));
 

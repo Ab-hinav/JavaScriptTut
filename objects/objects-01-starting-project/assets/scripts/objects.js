@@ -233,6 +233,7 @@ if (person.prop === undefined) {
 // - call and apply are used to call a function with a specific this value
 // - bind is used to create a new function with a specific this value
 // example 1:
+// console.log('fdsf')
 // const person = {
 //     name: 'Max',
 //     age: 30,
@@ -245,9 +246,9 @@ if (person.prop === undefined) {
 //     name: 'Manu'
 // };
 // anotherPerson.greet = person.greet;
-// anotherPerson.greet();
+// console.log(anotherPerson.greet());
 // const anotherGreet = person.greet.bind(anotherPerson);
-// anotherGreet();
+// console.log(anotherGreet());
 
 // example using call
 // const person = {
