@@ -29,8 +29,10 @@ function getPosition(){
 
 
 function trackUserHandler() {
+  let posDataOut;
   getPosition().then((posData)=>{
     console.log(posData);
+    posDataOut = posData;
     return setTimer(2000);
   }).catch((err)=>{
     console.log(err);
@@ -40,6 +42,10 @@ function trackUserHandler() {
   setTimeout(()=> console.log('print me'),0);
   console.log('getting location');
 }
+
+/// imp point to note here setTimeOut(fn,0) can never execute before console.log() 
+// and it is only a min time to execute , if anything is running in the call stack 
+// settimeout wont be able to enter
 
 button.addEventListener('click', trackUserHandler);
 
@@ -61,7 +67,8 @@ async function trackUserHandler2(){
 
 }
 
-
+// or 
+trackUserHandler2().catch((err) => {console.log('error happended')});
 
 
 
